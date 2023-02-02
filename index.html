@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+    
+<ion-nav-view></ion-nav-view>
+
+<script id="templates/menu.html" type="text/ng-template">
+ <ion-side-menus>
+  <!-- Main Content -->
+ <ion-side-menu-content>
+ 
+  <ion-nav-bar class="custom-purple">
+   <ion-nav-back-button>
+   </ion-nav-back-button>
+
+   <ion-nav-buttons side="left">
+     <button class="button button-icon button-dark ion-navicon" menu-toggle="left">
+     </button>
+   </ion-nav-buttons>
+ </ion-nav-bar>
+ <ion-nav-view name="menuContent"></ion-nav-view>
+ 
+ </ion-side-menu-content>
+
+ <!-- Left Side Menu -->
+ <ion-side-menu side="left">
+ 
+ <ion-header-bar class="custom-purple">
+    <h1 class="title" style="color:white">Menu</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item menu-close href="#/app/principal">
+        <i class="icon ion-home">&nbsp;&nbsp;&nbsp;Página Inicial</i>
+      </ion-item>
+      <ion-item menu-close href="#/app/pergunta">
+        <i class="icon ion-ios-email">&nbsp;&nbsp;&nbsp;Duuuuuuvidas Frequentes</i>
+      </ion-item>
+      <ion-item menu-close href="#/app/Partners">
+        <i>&nbsp;&nbsp;&nbsp;Parceiros:</i>
+      </ion-item>
+      <ion-item menu-close href="#/app/Partners">
+        <i class="icon ion-ios-email">&nbsp;&nbsp;&nbsp;Game News</i>
+      </ion-item>
+      <ion-item menu-close href="#/app/Partners">
+        <i class="icon ion-ios-email">&nbsp;&nbsp;&nbsp;Trivago</i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+ </ion-side-menu>
+ </ion-side-menus>
+</script>
+<script id="templates/principal.html" type="text/ng-template">
+    <ion-view view-title="Portal de Noticias de Games">
+      <ion-pane>
+      <ion-content class="padding" style="background-image: url('../img/wlp.png');">
+        <h1 style="color: #daa520;text-align: center" > Aqui você encontra notícias sobre todos os boatos correndo na Facef. </h1>
+        <ion-list>
+          <ion-item class="item-icon-left item-text-wrap custom-purple">
+            <i class="icon ion-android-arrow-forward"></i>
+            <a href="#/app/drag" style="text-decoration:none"><h2 style="color:white">Ar Condicionado</h2></a>
+          </ion-item>
+           <ion-item class="item-icon-left item-text-wrap custom-purple">
+            <i class="icon ion-android-arrow-forward"></i>
+            <a href="#/app/zelda" style="text-decoration:none"><h2 style="color:white">Zelda</h2></a></a>
+          </ion-item>
+           <ion-item class="item-icon-left item-text-wrap custom-purple">
+           <i class="icon ion-android-arrow-forward"></i>
+            <a href="#/app/tombraider" style="text-decoration:none"><h2 style="color:white">Tomb Raider</h2></a>
+          </ion-item>
+           <ion-item class="item-icon-left item-text-wrap custom-purple">
+           <i class="icon ion-android-arrow-forward"></i>
+            <a href="#/app/switch" style="text-decoration:none"><h2 style="color:white">Nintendo Switch</h2></a>
+          </ion-item>
+          </ion-item>
+           <ion-item class="item-icon-left item-text-wrap custom-purple">
+           <i class="icon ion-android-arrow-forward"></i>
+            <a href="#/app/yugioh" style="text-decoration:none"><h2 style="color:white">Yu-gi-Oh mobile</h2></a>
+          </ion-item>
+          <img src="img/trivago.gif">
+        </ion-list>
+      </ion-content>
+    </ion-pane>
+  </ion-view>
+</script>
+<script id="templates/zelda.html" type="text/ng-template">
+    <ion-pane>
+      <nav>
+      <ion-content style="background-image: url('../img/wlp.png');">
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Zelda: Breath of the Wild bate recorde de avaliações </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/zelda.jpg" align="'left">
+        <h4 style="color: white; text-align: center">Zelda: Breath of the Wild se tornou o jogo com o maior número de avaliações: mais de 50 reviews dando nota 100 para o game mais recente da franquia. </h4>
+        <a href="#/app/leiazelda" style="text-decoration:none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">Leia mais > </h4></button></a>
+      </section>
+    </nav>
+   </ion-content>
+  </ion-pane>
+</script>
+<script id="templates/leiazelda.html" type="text/ng-template">
+    <ion-pane>
+      <nav>
+      <ion-content style="background-image: url('../img/wlp.png');" ng-controller="GeralCtrl">
+
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Zelda: Breath of the Wild bate recorde de avaliações </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/Zelda.jpg" align="'left">
+        <h4 style="color: white; text-align: center">Pouco tempo depois de ser lançado, Zelda: Breath of the Wild se tornou o jogo com o maior número de avaliações máximas no agregador críticas Metacritic, com mais de 50 reviews dando nota 100 para o game mais recente da franquia. Até o momento, nenhuma crítica especializada deu uma avaliação negativa ao título. O recorde anterior era de GTA IV, em 2008. 
+        <br/>
+        <br/>
+
+    The Legend of Zelda: Breath of the Wild busca retornar às origens da franquia, com um mundo aberto para explorar e uma jogabilidade não-linear, possibilitando terminar o jogo mesmo sem concluir a história.<br/> O jogo também tem um grande foco em sobrevivência, sendo necessário encontrar comida, itens, armas e roupas para sobreviver à Hyrule devastada por Calamity Ganon.</h4>
+      </ion-content>
+      <button class="button button-block custom-purple" ng-click="showActionSheet()"><h4 style="color:white">Compartilhar</h4></button>
+      <a href="#/app/zelda" style="text-decoration:none"><button class="button button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">< Voltar </h4></button>
+      </br>
+      </section>
+
+    </nav>
+    </ion-pane>
+</script>
+<script id="templates/tombraider.html" type="text/ng-template">
+    <ion-pane>
+      <nav>
+      <ion-content style="background-image: url('../img/wlp.png');">
+
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Conheça as mudanças na versão de Rise of the Tomb Raider para PS4 </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/Tomb.jpg" align="'left">
+        <h4 style="color: white; text-align: center">Rise of the Tomb Raider é a mais nova aventura da heroína Lara Croft. Inicialmente o jogo tinha versões apenas para Xbox One e Xbox 360, mas finalmente chegou ao PS4 no pacote Rise of the Tomb Raider: 20 Year Celebration. </h4>
+        <a href="#/app/leiatomb" style="text-decoration: none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">Leia mais > </h4></button></a>
+      </ion-content>
+      </section>
+    </nav>
+    </ion-pane>
+</script>
+<script id="templates/leiatomb.html" type = "text/ng-template">
+    <ion-pane>
+      <ion-view view-title="Portal de noticias de games" style="text-align:center; color:white; background-color: #8D02B3;">
+      <nav>
+      <ion-content style="background-image: url('../img/wlp.png');" ng-controller="GeralCtrl">
+
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Conheça as mudanças na versão de Rise of the Tomb Raider para PS4 </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/Tomb.jpg" align="'left">
+        <h4 style="color: white; text-align: center">Quem dominou a versão original de Rise of the Tomb Raider pode tentar a sorte na nova dificuldade "Sobrevivente Extremo", perfeita para o público mais hardcore. Além disso, agora é possível jogar online cooperativamente com um amigo no modo "Resistência", no qual é preciso sobreviver às investidas de hordas. 
+        <br/>
+        <br/>
+
+    <b> De volta ao lar </b>
+
+    <br/>
+        <br/>
+    A nova versão do game traz, de fábrica, todos os DLC lançados até o momento. Baba Yaga: O Templo da Bruxa e A Escuridão Fria são ótimos acréscimos à jornada e merecem ser experimentados. Esses ficam ainda melhores quando acompanhados por Laços de Sangue, fase que deve alegrar os fãs mais velhos, já que resgata a exploração da mansão de Lara.
+
+    <br/>
+        <br/>
+
+        <b> Edição definitiva </b>
+
+    <br/>
+        <br/>
+
+        Apesar das novidades, vale a pena destacar que não se trata de uma remasterização, então não espere quaisquer melhorias técnicas. Sequer há diferenças substanciais entre as versões para PlayStation 4 e Xbox One, e ambas rodam a 30 quadros por segundo.
+        <br/>
+    Isso não é um problema, já que o título é bem recente e já era lindo em sua versão original para consoles Microsoft. Ainda assim, o novo pacote só é recomendado para quem não possui o Rise of the Tomb Raider original ou busca uma forma elegante e simples de adquirir todos os DLC e bônus do jogo de uma só vez.
+
+        </h4>
+      </ion-content>
+      <button class="button button-block custom-purple" ng-click="showActionSheet()"><h4 style="color:white">Compartilhar</h4></button>
+      <a href="#/app/tombraider" style="text-decoration: none"><button class="button button-block custom-purple" id="btt"><h4 style="color:white; background-color: #8D02B3;">< Voltar</h4></button>
+      </section>
+
+    </nav>
+    </ion-pane>
+  </script>
+<script id="templates/switch.html" type="text/ng-template">
+<ion-pane>
+  <ion-content style="background-image: url('../img/wlp.png');" ng-controller="GeralCtrl">
+  <section>
+      <h1 style="color: #daa520;text-align: center">Lançamento do Nintendo Switch! </h1> 
+      <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+      <img src="img/switch.jpg" align="middle">
+      <h4 style="color: white; text-align: center">O Nintendo Switch tem sua data de lançamento confirmada para o dia 03/03/17. </h4>
+      <a href="#/app/leiaswitch" style="text-decoration:none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">Leia mais ></h4></button>
+    </section>
+  </ion-content>
+</ion-pane>
+</script>
+<script id="templates/leiaswitch.html" type="text/ng-template">
+  <ion-pane>
+    <ion-content style="background-image: url('../img/wlp.png');" ng-controller="GeralCtrl">
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Lançamento do Nintendo Switch! </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/switch.jpg" align="'left">
+        <h4 style="color: white; text-align: center">O Nintendo Switch, próxima geração de videogame da Nintendo, tem data para chegar ao mercado: 3 de março de 2017. Este foi o dia informado pela fabricante em um anúncio feito nesta sexta-feira a partir do Japão (ainda era madrugada no Brasil). 
+        <br/>
+        <br/>
+
+    O console é aguardado pelas fãs da marca japonesa desde que a Nintendo divulgou as primeiras imagens, em outubro de 2016. Ele chama a atenção pelo visual diferente do que estamos acostumados a ver nos eventuais suspeitos dentro da indústria de games, o Xbox One e PS4.
+    <br/>
+    O Switch pode ser usado como videogame de mesa e como videogame portátil. Ou seja, pode ser usado dentro de casa ou no avião  </h4>
+     <button class="button button-block custom-purple" ng-click="showActionSheet()"><h4 style="color:white">Compartilhar</h4></button>
+      <a href="#/app/switch" style="text-decoration:none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">< Voltar </h4></button></a>
+      </section>
+    </ion-content>
+  </ion-pane>
+</script>
+<script id="templates/yugioh.html" type="text/ng-template">
+  <ion-view view-title="Portal de noticias de games">
+    <ion-pane>
+      <nav>
+      <ion-content style="background-image: url('../img/wlp.png');">
+
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Novo Yu-Gi-Oh! para celular! </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/duellinks-1.jpg">
+        <h4 style="color: white; text-align: center">O novo jogo será lançado no dia 12 de Janeiro para Ios e Android. </h4>
+        <a href="#/app/leiayugioh" style="text-decoration:none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">Leia mais > </h4></button>
+      </ion-content>
+      </section>
+
+    </nav>
+    </ion-pane>
+  </ion-view>
+</script>
+<script id="templates/leiayugioh.html" type="text/ng-template">
+  <ion-view view-title="Portal de Noticias de Games">
+    <ion-pane>
+      <ion-content style="background-image: url('../img/wlp.png');" ng-controller="GeralCtrl">
+
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Novo Yu-Gi-Oh! para celular! </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/duellinks-1.jpg" align="'left">
+        <h4 style="color: white; text-align: center">A Konami acaba de anunciar que o game "Yu-Gi-Oh Duel Links" já está disponível para download nos smartphones brasileiros — sendo disponibilizado completamente em português para os consumidores. 
+        <br/>
+        <br/>
+
+    O download do game é totalmente gratuito e grande parte dos recursos disponibilizados também podem ser acessados sem qualquer custo. Mesmo assim, é bom lembrar que algumas cartas especiais e outros recursos podem demandar a compra interna para que sejam desbloqueados.  </h4>
+      </ion-content>
+      <button class="button button-block custom-purple" ng-click="showActionSheet()"><h4 style="color:white">Compartilhar</h4></button>
+      <a href="#/app/yugioh" style="text-decoration:none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">< Voltar </h4></button>
+      </section>
+    </ion-pane>
+  </ion-view>
+</script>
+<script id="templates/drag.html" type="text/ng-template">
+ <ion-view view-title="Portal de Noticia de Games">
+   <ion-content style="background-image: url('../img/wlp.png');">
+     <h1 style="color: #daa520;text-align: center">Dragon Ball Xenoverse 2 recebe nova DLC </h1> 
+        <img src="img/dbxv.jpg" align="middle">
+        <h4 style="color: white; text-align: center">A Bandai Namco anunciou que Dragon Ball Xenoverse 2 receberá novos conteúdos gratuitos no dia 27 de Fevereiro em todas as actuais plataformas em que se encontra disponível. </h4>
+        <a href="#/app/leiadrag" style="text-decoration:none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">Leia mais > </h4></button>
+   </ion-content>
+ </ion-view>
+</script>
+<script id="templates/leiadrag.html" type="text/ng-template">
+    <ion-pane> 
+      <nav>
+      <ion-content style="background-image: url('../img/wlp.png');" ng-controller="GeralCtrl">
+
+      <section>
+        <h1 style="color: #daa520;text-align: center"> Dragon Ball Xenoverse 2 recebe nova DLC </h1> 
+        <!--Colocar popup pedindo email do usuario para novas noticias (formulario)-->
+        <img src="img/dbxv.jpg" align="'left">
+        <h4 style="color: white; text-align: center">A Bandai Namco anunciou que Dragon Ball Xenoverse 2 receberá novos conteúdos gratuitos no dia 27 de Fevereiro em todas as actuais plataformas em que se encontra disponível. 
+        <br/>
+        <br/>
+
+    Novas roupas para Zangya, Bido, Android 15 e Metal Cooler, duas novas missões Expert, 5 novos ataques, e novas regras para o Torneio Tenkaichi são as novidades que estão a ser preparadas. Não terás de pagar nada para receber estes conteúdos, uma vez que foram preparados como ofertas.
+
+    <br/>
+        <br/>
+        O segundo pacote com conteúdos adicionais pagos para Dragon Ball Xenoverse 2 apresentará um novo capítulo de história, duas novas personagens (Champa e Vados), um novo cenário, oito novos ataques, 3 novos fatos e um novo veículo. Isto sem esquecer os novos emotes que estarão ao teu dispor.
+        
+        </h4>
+      </ion-content>
+      <button class="button button-block custom-purple" ng-click="showActionSheet()"><h4 style="color:white">Compartilhar</h4></button>
+      <a href="#/app/drag" style="text-decoration:none"><button class="button button-assertive button-block custom-purple" id="btt"><h4 style="text-align:center; color:white; background-color: #8D02B3;">< Voltar </h4
+      ></button>
+      </section>
+
+    </nav>
+    </ion-pane>
+</script>
+<script id="templates/contato.html" type="text/ng-template">
+    <ion-view view-title="Portal de Noticias de Games">
+      <ion-content style="background-image: url('../img/wlp.png');">
+        <ion-list>
+       <div class="padding"> 
+         <label class="item item-input custom-purple">
+            <span class="input-label" class="custom-purple" style="color:white" >Nome completo</span>
+            <input type="text" placeholder="Nome completo" class="custom-purple">
+          </label>
+         <label class="item item-input custom-purple">
+            <span class="input-label" class="custom-purple" style="color:white">Email</span>
+            <input type="email" placeholder="email" class="custom-purple">
+          </label>
+          <label class="item item-input custom-purple">
+            <textarea placeholder="Comentário" class="custom-purple" style="color:white"></textarea>
+          </label>
+        </div>
+          <button class="button button-block custom-purple">
+            Enviar comentário
+          </button>
+        </div>
+    </ion-pane>
+   </ion-content>
+  </ion-view>
+</script>
+</body>
+</html>

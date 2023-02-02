@@ -1,0 +1,34 @@
+/* Empty. Add your own CSS if you like */
+.custom-purple {
+	color: white !important;
+	background-color: #8D02B3 !important;
+}
+
+.custom-back{
+	background-image: url('../img/wlp.png')	;
+	background-size: cover;
+}
+
+#btt {
+	height: 40px;
+}
+#yugih1{
+	color: white;
+	text-align: center;
+}
+#yugih1_title{
+	color: white;
+	text-align: center;
+}
+#yugih4{
+	text-align: center;
+	color: white;
+}
+
+#yugih4_2{
+	color: white;
+	text-align: center;
+}
+.noti{
+	background-color: gray;
+}
